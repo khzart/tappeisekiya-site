@@ -3668,3 +3668,11 @@ html body #images .images-gallery { width: 60.2vw !important; justify-self: cent
 @media (max-width: 768px) {
 html body .footer-parent span { font-size: 13px !important; letter-spacing: 0.1em !important; }
 }
+@media (max-width: 768px) {
+html body .atelier-row, html body .cloth-row, html body #motion { padding-left: 24px !important; padding-right: 24px !important; }
+html body #about .img-block { width: auto !important; max-width: none !important; margin-left: -40px !important; margin-right: -40px !important; }
+html body #about .img-block .about-image { width: 100% !important; }
+html body .atelier-row, html body .cloth-row, html body #about, html body #philosophy, html body #motion,
+html body #stores, html body .online-shop-section, html body #contact { padding-top: 80px !important; padding-bottom: 80px !important; }
+html body #images .images-layout { padding-top: 80px !important; padding-bottom: 80px !important; }
+}
