@@ -3681,3 +3681,13 @@ html body #about h1 { margin-bottom: 0 !important; }
 html body #about .poetry-divider { margin-top: 24px !important; margin-bottom: 0 !important; }
 html body #about .about-designer-statement { padding-top: 0 !important; margin-top: 36px !important; }
 }
+@media (min-width: 769px) {
+html body .atelier-row, html body .cloth-row, html body #about, html body #philosophy, html body #motion,
+html body #stores, html body .online-shop-section, html body #contact { padding-top: 128px !important; padding-bottom: 128px !important; }
+html body #images { padding-top: 128px !important; padding-bottom: 0 !important; }
+html body #images .images-layout { padding-bottom: 128px !important; }
+html body #about h1 { margin-bottom: 0 !important; }
+html body #about .poetry-divider { margin-top: 24px !important; margin-bottom: 36px !important; }
+html body #motion .motion-copy { margin-bottom: 56px !important; }
+html body #motion .motion-copy .section-line { margin-bottom: 0 !important; }
+}
