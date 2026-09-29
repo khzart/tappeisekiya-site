@@ -3071,6 +3071,9 @@ body,
 .closing-editorial,
 .ed-sky,
 .motion-section,
+.collection-intro,
+.collection-category,
+.collection-back,
 .footer {
 background-image: var(--wall-relief), var(--wall-mottle) !important;
 background-blend-mode: soft-light, soft-light !important;
@@ -3400,3 +3403,34 @@ animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
 @media (prefers-reduced-motion: reduce) {
 @view-transition { navigation: none; }
 }
+.motion-label { font-size: 4.25rem; }
+@media (max-width: 768px) { .motion-label { font-size: 2.35rem; } }
+@media (min-width: 769px) {
+.ed-chapter__num { font-size: 0.99rem; font-weight: 400; line-height: 1.6; }
+html body #motion .motion-copy p:not(.ed-chapter),
+html body .closing-editorial__copy .contact-note,
+html body .online-shop-inner .online-shop-text {
+font-size: 1.1rem; font-weight: 300; line-height: 2.05; letter-spacing: 0.12em;
+}
+html body .images-copy p,
+html body #contact .closing-editorial__copy p:not(.contact-note) {
+font-size: 1.375rem; font-weight: 300; line-height: 2.05; letter-spacing: 0.12em;
+}
+.footer-parent-label,
+.footer-content .copyright,
+.about-credit .about-credit-role { font-size: 0.68rem; }
+}
+.positioning-statement,
+.page-hero,
+.online-shop-section,
+.contact-section.closing-editorial {
+background-size: 700px 700px, 1100px 1100px, 100% 200px !important;
+background-repeat: repeat, repeat, no-repeat !important;
+background-blend-mode: soft-light, soft-light, normal !important;
+}
+.positioning-statement { background-image: var(--wall-relief), var(--wall-mottle), linear-gradient(rgb(227, 226, 234), rgba(227, 226, 234, 0)) !important; }
+.page-hero { background-image: var(--wall-relief), var(--wall-mottle), linear-gradient(rgb(231, 236, 239), rgba(231, 236, 239, 0)) !important; }
+.online-shop-section { background-image: var(--wall-relief), var(--wall-mottle), linear-gradient(rgb(227, 226, 234), rgba(227, 226, 234, 0)) !important; }
+.contact-section.closing-editorial { background-image: var(--wall-relief), var(--wall-mottle), linear-gradient(rgb(219, 218, 228), rgba(219, 218, 228, 0)) !important; }
+.collection-item__name { word-break: auto-phrase; text-wrap: balance; }
+p, .poetry-line { text-wrap: pretty; }

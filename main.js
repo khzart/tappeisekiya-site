@@ -524,15 +524,15 @@ window.addEventListener('load', () => {
 // 柄の起点をページ全体の左上にそろえる＝全章が1枚の壁として続く（色・柄・大きさは同じ）。
 (() => {
   const SEL = 'body, .hero, .ed-plate, .atelier-row, .positioning-statement, .page-hero, .ed-interlude, .lace-section, ' +
-    '.images-section, .cloth-row, .stockist-section, .online-shop-section, .closing-editorial, .ed-sky, .motion-section, .footer';
+    '.images-section, .cloth-row, .stockist-section, .online-shop-section, .closing-editorial, .ed-sky, .motion-section, .collection-intro, .collection-category, .collection-back, .footer';
   let raf = 0;
   const align = () => {
     raf = 0;
     const sx = window.scrollX, sy = window.scrollY;
     document.querySelectorAll(SEL).forEach((el) => {
       const r = el.getBoundingClientRect();
-      const x = -Math.round(r.left + sx), y = -Math.round(r.top + sy);
-      el.style.setProperty('background-position', `${x}px ${y}px, ${x}px ${y}px`, 'important');
+      const x = -(r.left + sx), y = -(r.top + sy);   // 丸めない＝章の上端が0.5pxの半端でも柄がずれない
+      el.style.setProperty('background-position', `${x}px ${y}px, ${x}px ${y}px, 0 0`, 'important');   // 3枚目＝境を溶かす層（章の上端に固定）
     });
   };
   const queue = () => { if (!raf) raf = requestAnimationFrame(align); };
