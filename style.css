@@ -3412,9 +3412,15 @@ html body .closing-editorial__copy .contact-note,
 html body .online-shop-inner .online-shop-text {
 font-size: 1.1rem; font-weight: 300; line-height: 2.05; letter-spacing: 0.12em;
 }
-html body .images-copy p,
-html body #contact .closing-editorial__copy p:not(.contact-note) {
+html body .images-copy p {
 font-size: 1.375rem; font-weight: 300; line-height: 2.05; letter-spacing: 0.12em;
+}
+html body #contact .closing-editorial__copy p:not(.contact-note) {
+font-size: 1.1rem; font-weight: 300; line-height: 2.05; letter-spacing: 0.12em; color: rgba(22, 21, 28, 0.74);
+}
+html body #contact .closing-editorial__copy .contact-note { font-size: 0.99rem; }
+html body .contact-section .signature-contact {
+width: auto; min-height: 0; padding: 1.2rem 3rem; font-size: 0.78rem; letter-spacing: 0.28em;
 }
 .footer-parent-label,
 .footer-content .copyright,
