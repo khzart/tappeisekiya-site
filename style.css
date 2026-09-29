@@ -3551,3 +3551,112 @@ html body .poetry-section .poetry-line { color: #05080a; }
 html body .poetry-section .poetry-label { color: #05080a; }
 html body #about > p { color: #555555; }
 .hero-video { object-fit: cover !important; object-position: center; }
+.about-cards { display: contents; }
+.about-cards__count { display: none; }
+@media (min-width: 769px) {
+html body #about .about-cards > p { grid-column: 1 / -1; }
+}
+html body #about .about-cards > p { color: #555555; }
+@media (max-width: 768px) {
+html body #about .about-cards {
+display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none;
+box-sizing: border-box; width: 100vw; max-width: 100vw; margin: 8px 0 0 calc(50% - 50vw); padding: 4px 11vw 6px;
+}
+html body #about .about-cards::-webkit-scrollbar { display: none; }
+html body #about .about-cards > p {
+box-sizing: border-box; flex: 0 0 78vw; width: 78vw; scroll-snap-align: center; margin: 0; padding: 34px 18px;
+min-height: 168px; text-align: center; line-height: 2.05;
+border-top: 1px solid rgba(17, 17, 17, 0.16); border-bottom: 1px solid rgba(17, 17, 17, 0.16);
+}
+html body #about { overflow-x: clip; }
+html body #about .about-cards > p br.mobile-only { display: none; }
+html body #about .about-cards__count {
+display: block; position: relative; width: 64px; height: 1px; margin: 26px auto 0; overflow: hidden;
+background: rgba(17, 17, 17, 0.14); font-size: 0; color: transparent;
+}
+}
+@media (max-width: 768px) {
+html body #about { padding-top: 88px !important; }
+html body .poetry-section { padding-top: 96px !important; padding-bottom: 96px !important; }
+html body .footer { padding-top: 0 !important; }
+html body .footer-spacer { height: 48px !important; min-height: 0 !important; }
+html body #about .about-cards > p br, html body #about .about-cards > p br.mobile-only { display: inline; }
+html[lang="en"] body #about .about-cards > p { text-wrap: balance; }
+html body #images .images-gallery { display: grid !important; grid-template-columns: 1fr 1fr; gap: 14px; align-items: start; height: auto !important; }
+html body #images .images-gallery .images-portrait { position: static !important; transform: none !important; margin: 0 !important;
+width: auto !important; height: auto !important; grid-column: auto !important; grid-row: auto !important; }
+html body #images .images-gallery .images-portrait img { width: 100% !important; height: auto !important; aspect-ratio: 2 / 3; object-fit: cover; }
+html body #images .images-gallery .images-portrait:nth-child(1) { order: 1; grid-column: 1 / -1 !important; }
+html body #images .images-gallery .images-portrait:nth-child(2) { order: 2; }
+html body #images .images-gallery .images-portrait:nth-child(3) { order: 3; margin-top: 44px !important; }
+html body #images .images-gallery .images-portrait:nth-child(4) { order: 4; }
+html body #images .images-gallery .images-portrait:nth-child(6) { order: 5; margin-top: 44px !important; }
+html body #images .images-gallery .images-portrait:nth-child(5) { order: 6; grid-column: 1 / -1 !important; }
+html body .cloth-row__grid { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 14px !important; }
+html body .cloth-row__grid figure:first-child { grid-column: 1 / -1; }
+html body .cloth-row__grid figure { transform: none !important; margin: 0 !important; }
+.swipe-count { display: block; position: relative; width: 64px; height: 1px; margin: 26px auto 0; overflow: hidden;
+background: rgba(17,17,17,.14); font-size: 0; color: transparent; }
+html body #about .about-cards__count::after, .swipe-count::after { content: ""; position: absolute; left: 0; top: 0; height: 100%;
+width: calc(100% / var(--n, 5)); background: rgba(17,17,17,.78); transform: translateX(calc(100% * var(--i, 0)));
+transition: transform .5s cubic-bezier(.22,.61,.36,1); }
+}
+@media (min-width: 769px) { .swipe-count { display: none; } }
+html body #about .about-designer-statement { border-top: 0 !important; }
+html body .positioning-statement__eyebrow { font-family: "Cormorant Garamond", serif !important; font-size: 4.25rem !important; font-weight: 300 !important;
+text-transform: none !important; letter-spacing: 0.02em !important; line-height: 1.1 !important; color: rgb(22, 21, 28) !important; margin-bottom: 2.4rem !important; }
+@media (max-width: 768px) {
+html body .positioning-statement__eyebrow { font-size: 2.35rem !important; margin-bottom: 1.8rem !important; }
+}
+html body #about.page-hero { background-image: var(--wall-relief), var(--wall-mottle), linear-gradient(rgb(227, 226, 234), rgba(227, 226, 234, 0)) !important; }
+@media (min-width: 769px) {
+html body #about { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important; }
+html body #about > .about-designer-statement { max-width: 490px; justify-self: end; }
+html body #about > .img-block { justify-self: start; max-width: 490px; }
+html body #about > .about-credit { width: min(490px, 100%); text-align: center; justify-self: start; margin-left: 0 !important; margin-right: 0 !important; }
+html body #about > .poetry-divider { justify-self: center; }
+}
+@media (max-width: 768px) {
+html body #stores .stockist-card:last-child { border-bottom: 0 !important; }
+}
+html body .online-shop-text, html body #contact .contact-note, html body .images-copy p:not(.ed-chapter), html body .motion-copy p:not(.ed-chapter) { font-family: var(--font-jp-serif) !important; font-size: 17.6px !important; font-weight: 300 !important;
+letter-spacing: 2.112px !important; line-height: 36.08px !important; color: rgba(17, 17, 17, 0.66) !important; }
+@media (max-width: 768px) {
+html body .online-shop-text, html body #contact .contact-note, html body .images-copy p:not(.ed-chapter), html body .motion-copy p:not(.ed-chapter) { font-size: 16px !important; letter-spacing: 1.28px !important; line-height: 32px !important; }
+}
+.stockist-body, .stockist-body__in { display: contents; }
+@media (min-width: 769px) {
+html body #stores .stockist-name[role="button"] { cursor: auto; }
+}
+@media (max-width: 768px) {
+html body #stores .stockist-card { padding: 0 !important; }
+html body #stores .stockist-name { position: relative; margin: 0 !important; padding: 22px 36px 22px 0; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+html body #stores .stockist-name::before, html body #stores .stockist-name::after {
+content: ""; position: absolute; right: 4px; top: 50%; width: 11px; height: 1px; background: rgba(22, 21, 28, 0.6);
+transition: transform .45s cubic-bezier(.22, .61, .36, 1); }
+html body #stores .stockist-name::after { transform: rotate(90deg); }
+html body #stores .stockist-card.is-open .stockist-name::after { transform: rotate(0deg); }
+html body #stores .stockist-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .45s cubic-bezier(.22, .61, .36, 1); }
+html body #stores .stockist-card.is-open .stockist-body { grid-template-rows: 1fr; }
+html body #stores .stockist-body__in { display: block; min-height: 0; overflow: hidden; }
+html body #stores .stockist-body__in > :first-child { margin-top: 0; }
+html body #stores .stockist-body__in > :last-child { margin-bottom: 24px; }
+}
+@media (max-width: 768px) {
+html body #about .about-designer-statement { width: auto !important; max-width: none !important; margin-left: -44px !important; margin-right: -44px !important; padding-left: 0 !important; padding-right: 0 !important; }
+}
+@media (max-width: 768px) {
+html body .nav-wordmark { font-size: 17px !important; letter-spacing: 0.14em !important; line-height: 1.2 !important; }
+}
+@media (max-width: 768px) {
+html body #philosophy .poetry-line { display: block; }
+html body #philosophy .poetry-text > br { display: none; }
+html body #philosophy .poetry-text { margin-left: -40px !important; margin-right: -40px !important; max-width: none !important; width: auto !important; }
+}
+@media (max-width: 768px) {
+html body .images-copy, html body .images-copy .images-label { text-align: left !important; }
+}
+html body .images-copy .images-label, html body .motion-copy .motion-label { position: relative; display: block; padding-top: 26px; }
+html body .images-copy .images-label::before, html body .motion-copy .motion-label::before {
+content: ''; position: absolute; left: 0; top: 0; width: 46px; height: 1px; background-color: var(--rule-plate); }
+html body .images-copy { position: relative !important; top: auto !important; }

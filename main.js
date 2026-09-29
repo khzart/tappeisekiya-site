@@ -561,3 +561,37 @@ window.addEventListener('load', () => {
   v.addEventListener('pause', () => show(false));
   v.addEventListener('ended', () => show(false));
 })();
+
+
+// 09-30 スマホのAboutカード＝今どの1枚かを 01 / 05 に出す
+(() => {
+  const box = document.querySelector('.about-cards'), n = document.querySelector('.about-cards__count span'); if (!box || !n) return;
+  const cards = [...box.children], bar = n.parentNode; bar.style.setProperty('--n', cards.length);
+  box.addEventListener('scroll', () => {
+    const c = box.scrollLeft + box.clientWidth / 2; let k = 0, best = 1e9;
+    cards.forEach((el, i) => { const d = Math.abs(el.offsetLeft + el.offsetWidth / 2 - c); if (d < best) { best = d; k = i; } });
+    n.textContent = String(k + 1).padStart(2, '0'); bar.style.setProperty('--i', k);
+  }, { passive: true });
+})();
+
+// 09-30 スマホだけ＝Stores は店名だけを並べ、押すと開く（オーナー「無駄に長いから全部閉じて開けてみれるように／スマホだけ」）
+// PC は包みを display: contents にして並びも見た目も変えない
+(() => {
+  document.querySelectorAll('#stores .stockist-card').forEach((card, i) => {
+    const name = card.querySelector('.stockist-name'); if (!name) return;
+    const body = document.createElement('div'); body.className = 'stockist-body';
+    const inner = document.createElement('div'); inner.className = 'stockist-body__in'; body.appendChild(inner);
+    [...card.children].filter(el => el !== name && !el.classList.contains('stockist-zip')).forEach(el => inner.appendChild(el));
+    // 郵便番号はスマホだけ開いた中の先頭へ（PCは元の位置＝店名の上のまま）
+    const zip = card.querySelector('.stockist-zip'), mq = matchMedia('(max-width: 768px)');
+    const placeZip = () => { if (!zip) return; if (mq.matches) inner.prepend(zip); else card.insertBefore(zip, name); };
+    placeZip(); mq.addEventListener('change', placeZip);
+    name.after(body);
+    body.id = `stockist-body-${i + 1}`;
+    name.setAttribute('role', 'button'); name.setAttribute('tabindex', '0');
+    name.setAttribute('aria-controls', body.id); name.setAttribute('aria-expanded', 'false');
+    const toggle = () => { const open = card.classList.toggle('is-open'); name.setAttribute('aria-expanded', String(open)); };
+    name.addEventListener('click', () => { if (matchMedia('(max-width: 768px)').matches) toggle(); });
+    name.addEventListener('keydown', e => { if ((e.key === 'Enter' || e.key === ' ') && matchMedia('(max-width: 768px)').matches) { e.preventDefault(); toggle(); } });
+  });
+})();

@@ -477,7 +477,7 @@
       <!-- 09-13 II — The Room＝先方支給の実写3点（引き→正面→寄り）。戻す時はこのsectionごと削除 -->
       <!-- 09-17 I — The Veil＝先方支給の実写を1枚だけで見せる図版（黒の見開き）。戻す時はこのsectionごと削除 -->
       <section class="atelier-row ed-dark" aria-label="The Room">
-        <p class="atelier-row__chapter ed-chapter"><span class="ed-chapter__num">I</span>The Veil</p>
+        <p class="atelier-row__chapter ed-chapter">The Veil</p>
         <div class="atelier-row__grid atelier-row__grid--four">
           <figure class="atelier-row__lead">
           <img src="../images/_opt/ed_veil.webp" alt="A lace veil turned to the window light" loading="lazy" decoding="async" />
@@ -486,44 +486,21 @@
           <figure><img src="../images/_opt/atelier_front_blue.webp" alt="青い光の中のレースのブラウスとパンツ" loading="lazy" decoding="async" /></figure>
           <figure><img src="../images/_opt/atelier_cloth_close.webp" alt="吊られたレースの衣" loading="lazy" decoding="async" /></figure>
         </div>
-        <p class="atelier-row__note">Light changes its shape for every hole in the lace.</p>
-      </section>
-      <section class="positioning-statement" aria-label="Brand positioning">
-        <div class="positioning-statement__inner">
-          <p class="positioning-statement__eyebrow">A Signature Line from CAETLA</p>
-          <p class="positioning-statement__lead">
-            The lace aesthetic cultivated by CAETLA Co., Ltd.<br />
-            over half a century.<br />
-            A special line that entrusts its inheritance and reinterpretation<br />
-            to the name of one designer.
-          </p>
-        </div>
       </section>
 
       <section id="about" class="page-hero">
         <h1>About the Brand</h1>
         <div class="poetry-divider"></div>
-        <p>Since 1974 in Okayama,<br><a href="https://caetla.co.jp/" class="about-parent-link" target="_blank" rel="noopener noreferrer">CAETLA Co., Ltd.</a> has pursued lace and embroidery for half a century.</p>
-        <p>TAPPEI SEKIYA was born<br>as the culmination of that aesthetic.</p>
-        <p>From the place where inherited craftsmanship<br>meets contemporary beauty.</p>
-        <p>A single thread, millimeter-scale devotion,<br>and handwork carrying the weight of time.</p>
-        <p>The garments that emerge resonate with the wearer,<br>becoming singular sculptures that cast a quiet light.</p>
         <div class="about-designer-statement">
           <p class="about-designer-statement__lead">Lace is not decoration.</p>
-          <p>
-            Designer Tappei Sekiya sees the time held in each stitch<br />
-            as a form shaped by the body, light, air, and silence.
-          </p>
-          <p>
-            That is why CAETLA's craft, through his name,<br />
-            is renewed as clothing for a new era.
-          </p>
+          <p>Okayama, 1974.<br />The lace aesthetic <a href="https://caetla.co.jp/" class="about-parent-link" target="_blank" rel="noopener noreferrer">CAETLA Co., Ltd.</a> has cultivated over half a century,<br /> entrusted to designer Tappei Sekiya as a special line.</p>
+          <p>The time held in each stitch,<br /> shaped as a form that includes the body and the air.</p>
+          <p>Resonating with the wearer, a singular sculpture that casts a quiet light.</p>
         </div>
 
         <div class="img-block">
           <img src="../images/_opt/about_portrait.webp" alt="Designer Tappei Sekiya" class="about-image" loading="lazy" decoding="async" />
         </div>
-        <p class="about-credit"><span class="about-credit-role">Designed by</span>Tappei Sekiya</p>
       </section>
 
       <section id="philosophy" class="poetry-section">
@@ -553,7 +530,7 @@
           <img src="../images/ed_room_empty.webp" alt="Window light falling into an empty room" loading="lazy" decoding="async" />
         </figure>
         <div class="ed-interlude__copy">
-          <p class="ed-chapter"><span class="ed-chapter__num">II</span>The Light</p>
+          <p class="ed-chapter">The Light</p>
           <!-- 09-18 オーナー指示でこの一文を消した（章表記「III The Light」は残す） -->
         </div>
       </section>
@@ -563,9 +540,8 @@
       <section class="images-section ed-dark" id="images">
         <div class="images-layout">
           <div class="images-copy">
-            <p class="ed-chapter"><span class="ed-chapter__num">III</span>Images</p>
             <span class="images-label">Images</span>
-            <p>Through the lace, the silhouette of the wearer emerges. Beauty exists between the visible and the invisible.</p>
+            <p class="section-line">A silhouette, through lace.</p>
           </div>
           <div class="images-gallery">
             <figure class="images-portrait">
@@ -595,9 +571,8 @@
            戻す＝このsectionと style.css の「MOTION」ブロック、メニューの Motion 1項目を削除するだけ -->
       <section class="motion-section ed-dark" id="motion">
         <div class="motion-copy">
-          <p class="ed-chapter"><span class="ed-chapter__num">IV</span>Motion</p>
           <span class="motion-label">Motion</span>
-          <p>A still frame begins to breathe.<br class="mobile-only" />Cloth takes the draft; the light moves slowly.</p>
+          <p class="section-line">Stillness, undone.</p>
         </div>
         <figure class="motion-frame">
           <video class="motion-video" playsinline preload="none" poster="../images/motion_poster.webp">
@@ -606,13 +581,12 @@
           <!-- 09-28 スマホはMOTIONを720p（9.4→3.7MB）。load()を呼ばない＝再生を押すまで読まない（呼ぶと押す前に読み始めた） -->
           <script>(function(v){if(v&&matchMedia('(max-width: 600px)').matches){var s=v.querySelector('source');s.setAttribute('src','../video/motion_sp.mp4');}})(document.querySelector('.motion-video'));</script>
           <button class="motion-play" type="button" aria-label="Play the film">Play</button>
-          <figcaption class="motion-caption">TAPPEI SEKIYA — Motion｜19 seconds</figcaption>
         </figure>
       </section>
 
       <!-- 09-13 III — The Cloth＝先方支給の実写3点（布と光）。戻す時はこのsectionごと削除 -->
       <section class="cloth-row ed-dark" aria-label="The Cloth">
-        <p class="cloth-row__chapter ed-chapter"><span class="ed-chapter__num">V</span>The Cloth</p>
+        <p class="cloth-row__chapter ed-chapter">The Cloth</p>
         <div class="cloth-row__grid">
           <figure><img src="../images/cloth_window.webp" alt="窓辺に掛けられたレースの衣" loading="lazy" decoding="async" /></figure>
           <figure><img src="../images/cloth_hang.webp" alt="吊られたレースの衣の重なり" loading="lazy" decoding="async" /></figure>
@@ -622,7 +596,6 @@
       <section class="stockist-section ed-dark" id="stores">
         <div class="stockist-inner">
           <div class="stockist-header">
-            <p class="ed-chapter ed-chapter--center"><span class="ed-chapter__num">VI</span>Stores</p>
             <span class="images-label">Stores</span>
           </div>
           <div class="stockist-grid">
@@ -712,7 +685,7 @@
       <section class="closing-editorial contact-section ed-dark" id="contact" aria-label="Contact">
         <div class="closing-editorial__copy">
           <span class="images-label">Contact</span>
-          <p>In silence lies the deepest dialogue — into the stillness between you and a single garment.<br>For inquiries, stockist information, or any questions, please do not hesitate to reach out.</p>
+          <p>For inquiries, stockist information, or any questions, please do not hesitate to reach out.</p>
           <a href="https://caetla.co.jp/inquiry" class="signature-contact" target="_blank" rel="noopener noreferrer">Contact</a>
         </div>
         <figure class="closing-editorial__image">
