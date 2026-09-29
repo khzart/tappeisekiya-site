@@ -3550,3 +3550,4 @@ a:active, button:active, .images-portrait:active { opacity: .6; transition: opac
 html body .poetry-section .poetry-line { color: #05080a; }
 html body .poetry-section .poetry-label { color: #05080a; }
 html body #about > p { color: #555555; }
+.hero-video { object-fit: cover !important; object-position: center; }

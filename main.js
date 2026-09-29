@@ -474,16 +474,24 @@ window.addEventListener('load', () => {
 (() => {
   const v = document.querySelector('.hero-video');
   if (!v) return;
-  const start = () => {
-    // 09-28 スマホは中央を切り出した縦の動画（608×1080・1.4MB）だけ、PCは元の16:9（4.6MB）だけを残す
-    const sp = matchMedia('(max-width: 600px)').matches;
-    v.querySelectorAll('source[data-src]').forEach((s) => {
-      if (s.hasAttribute('data-sp') !== sp) { s.remove(); return; }
-      s.src = s.dataset.src; s.removeAttribute('data-src');
-    });
+  // 09-30 🔴 オーナー「動画変になってます／2度とならないように」＝狭い幅で開いた後に窓を広げると、
+  //   縦の動画（608×1080）がPCの16:9の枠へ引き伸ばされて映っていた（選ぶのが読み込み時の1回だけ・PCの置き方が fill）。
+  //   ∴ 幅が変わるたびに合う方へ差し替える（CSS 側も cover にして、どの組み合わせでも伸びない）。
+  const mq = matchMedia('(max-width: 600px)');
+  const srcs = [...v.querySelectorAll('source[data-src]')].map((s) => ({ el: s, url: s.dataset.src, sp: s.hasAttribute('data-sp'), type: s.type }));
+  let current = null;
+  const pick = () => {
+    const sp = mq.matches;
+    if (current === sp) return;
+    current = sp;
+    v.querySelectorAll('source').forEach((s) => s.remove());
+    // 09-28 スマホは中央を切り出した縦の動画（608×1080・1.4MB）だけ、PCは元の16:9（4.6MB）だけ
+    srcs.filter((s) => s.sp === sp).forEach((s) => { const el = document.createElement('source'); el.src = s.url; el.type = s.type; v.appendChild(el); });
+    v.poster = './images/' + (sp ? 'hero_poster_sp.webp' : 'hero_poster_pc.webp');
     v.load();
     v.play().catch(() => {});
   };
+  const start = () => { pick(); mq.addEventListener('change', pick); };
   // 09-28③ 実測（スマホ5回ずつ）＝load前に始めると他の読み込みと取り合って遅い回が出た。load後に単独で読むのが最も安定
   if (document.readyState === 'complete') start();
   else window.addEventListener('load', start, { once: true });
