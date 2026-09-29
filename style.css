@@ -721,8 +721,8 @@ background-color: #5f818b;
 background-image:
 radial-gradient(120% 90% at 18% 6%, rgba(245, 242, 235, 0.14), transparent 58%),
 radial-gradient(95% 75% at 88% 96%, rgba(18, 24, 28, 0.2), transparent 62%),
-url("images/tex/tex_45453904.webp"),
-url("images/tex/tex_06abb567.webp");
+url("images/tex/tex_0d12e655.webp"),
+url("images/tex/tex_1cf60373.webp");
 background-blend-mode: normal, normal, soft-light, soft-light;
 background-size: auto, auto, 700px 700px, 1100px 1100px;
 background-repeat: no-repeat, no-repeat, repeat, repeat;
@@ -3037,10 +3037,10 @@ margin: 0;
 .philosophy-gallery--archive .img-block:nth-child(11) { --l: 71.0%; --t: 50%; --w: 13.0%; }
 }
 :root {
---wall-relief: url("images/tex/tex_ee2d2439.webp");
---wall-mottle: url("images/tex/tex_970f6d75.webp");
---wall-relief-soft: url("images/tex/tex_a10c8ab7.webp");
---wall-mottle-soft: url("images/tex/tex_1f182646.webp");
+--wall-relief: url("images/tex/tex_727c3915.webp");
+--wall-mottle: url("images/tex/tex_44487944.webp");
+--wall-relief-soft: url("images/tex/tex_df058ec8.webp");
+--wall-mottle-soft: url("images/tex/tex_4292494b.webp");
 }
 .page-hero .img-block,
 .ed-interlude__figure,
@@ -3070,6 +3070,7 @@ body,
 .online-shop-section,
 .closing-editorial,
 .ed-sky,
+.motion-section,
 .footer {
 background-image: var(--wall-relief), var(--wall-mottle) !important;
 background-blend-mode: soft-light, soft-light !important;
@@ -3386,7 +3387,16 @@ transform: none !important;
 }
 html:not(.tex-on) :is(.ed-plate, .atelier-row, .positioning-statement, .page-hero, .ed-interlude, .lace-section,
 .images-section, .cloth-row, .stockist-section, .online-shop-section, .closing-editorial, .ed-sky, .footer,
-.poetry-section),
+.poetry-section, .motion-section),
 html:not(.tex-on) .poetry-section::after {
 background-image: none !important;
+}
+@view-transition { navigation: auto; }
+::view-transition-old(root),
+::view-transition-new(root) {
+animation-duration: 0.55s;
+animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+@media (prefers-reduced-motion: reduce) {
+@view-transition { navigation: none; }
 }

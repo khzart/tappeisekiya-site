@@ -518,3 +518,26 @@ window.addEventListener('load', () => {
   else window.addEventListener('load', kick, { once: true });
 })();
 
+
+// 09-29 紙目の継ぎ目をなくす（オーナー「ツギハギになってるところを全部滑らかに」）
+// 各章が柄を自分の左上(0,0)から敷き直していた＝章の境で柄が切り替わって見えた。
+// 柄の起点をページ全体の左上にそろえる＝全章が1枚の壁として続く（色・柄・大きさは同じ）。
+(() => {
+  const SEL = 'body, .hero, .ed-plate, .atelier-row, .positioning-statement, .page-hero, .ed-interlude, .lace-section, ' +
+    '.images-section, .cloth-row, .stockist-section, .online-shop-section, .closing-editorial, .ed-sky, .motion-section, .footer';
+  let raf = 0;
+  const align = () => {
+    raf = 0;
+    const sx = window.scrollX, sy = window.scrollY;
+    document.querySelectorAll(SEL).forEach((el) => {
+      const r = el.getBoundingClientRect();
+      const x = -Math.round(r.left + sx), y = -Math.round(r.top + sy);
+      el.style.setProperty('background-position', `${x}px ${y}px, ${x}px ${y}px`, 'important');
+    });
+  };
+  const queue = () => { if (!raf) raf = requestAnimationFrame(align); };
+  queue();
+  window.addEventListener('load', queue, { once: true });
+  window.addEventListener('resize', queue);
+  if ('ResizeObserver' in window) new ResizeObserver(queue).observe(document.body);
+})();
