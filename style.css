@@ -3665,3 +3665,6 @@ html body #images .images-layout { grid-template-columns: minmax(0, 1fr) !import
 html body #images .images-copy { width: 60.2vw; max-width: none !important; padding-top: 0 !important; justify-self: center; }
 html body #images .images-gallery { width: 60.2vw !important; justify-self: center; }
 }
+@media (max-width: 768px) {
+html body .footer-parent span { font-size: 13px !important; letter-spacing: 0.1em !important; }
+}
