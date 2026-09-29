@@ -3494,3 +3494,59 @@ html body #about > .about-credit { grid-column: 2; justify-self: start; text-ali
 html body #about { padding-top: 144px !important; }
 html body #images { padding-top: 144px !important; }
 }
+@media (min-width: 769px) {
+html body .atelier-row__grid--four { grid-template-columns: 1.3fr 1fr 1fr 1fr; align-items: end; }
+html body .ed-dark.atelier-row .atelier-row__grid--four figure:nth-child(2),
+html body .ed-dark.atelier-row .atelier-row__grid--four figure:nth-child(3) { transform: none; }
+html body .ed-dark.atelier-row .atelier-row__grid--four figure:nth-child(3) { transform: translateY(clamp(1.5rem, 4vw, 4.5rem)); }
+html body #stores .stockist-grid { grid-template-columns: repeat(3, 1fr); gap: 0 4vw; }
+}
+@media (max-width: 768px) {
+html body .atelier-row__grid--four { grid-template-columns: 1fr 1fr; }
+}
+.atelier-row__lead { margin: 0; }
+.atelier-row__note {
+margin: clamp(1.6rem, 2.4vw, 2.4rem) 0 0; text-align: right; font-family: var(--font-jp-serif);
+font-size: clamp(0.92rem, 1.1vw, 1.08rem); letter-spacing: 0.14em; color: var(--on-plate-3);
+}
+[data-rise] { transform: translateY(12px); filter: blur(4px);
+transition: opacity .6s cubic-bezier(.22,.61,.36,1), transform .6s cubic-bezier(.22,.61,.36,1), filter .6s cubic-bezier(.22,.61,.36,1); }
+[data-fade] { transform: scale(1.018); transition: opacity .7s cubic-bezier(.22,.61,.36,1), transform .9s cubic-bezier(.22,.61,.36,1); }
+.ed-chapter__num { transition: opacity .6s ease .15s; }
+.motion-frame { position: relative; }
+.motion-play {
+position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+width: 104px; height: 104px; border-radius: 50%; border: 1px solid rgba(242, 241, 238, 0.7); background: rgba(10, 10, 12, 0.18);
+color: #f2f1ee; font-family: var(--font-serif); font-size: 0.82rem; letter-spacing: 0.3em; text-transform: uppercase; padding-left: 0.3em;
+cursor: pointer; backdrop-filter: blur(2px); transition: opacity .4s ease, background .4s ease;
+}
+.motion-play:hover { background: rgba(10, 10, 12, 0.34); }
+.motion-frame.is-playing .motion-play { opacity: 0; pointer-events: none; }
+.motion-frame.is-playing .motion-video { cursor: pointer; }
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+.atelier-row figure, .cloth-row__grid figure, .images-portrait, .archive-item figure, .poetry-section figure,
+.img-block, .closing-editorial__image { overflow: hidden; }
+.atelier-row figure img, .cloth-row__grid figure img, .images-portrait img, .poetry-section figure img,
+.img-block img, .closing-editorial__image img { transition: scale .9s cubic-bezier(.22,.61,.36,1); }
+.atelier-row figure:hover img, .cloth-row__grid figure:hover img, .images-portrait:hover img, .poetry-section figure:hover img,
+.img-block:hover img, .closing-editorial__image:hover img { scale: 1.025; }
+.stockist-map, .about-parent-link { border-bottom-color: transparent !important; background-image: linear-gradient(currentColor, currentColor);
+background-repeat: no-repeat; background-size: 100% 1px; background-position: 100% 100%; opacity: 1 !important;
+transition: background-size .45s cubic-bezier(.22,.61,.36,1) !important; }
+.stockist-map { background-image: linear-gradient(rgba(17,17,17,.45), rgba(17,17,17,.45)); }
+.about-parent-link { background-image: linear-gradient(rgba(17,17,17,.35), rgba(17,17,17,.35)); }
+.stockist-map:hover, .about-parent-link:hover { animation: khz-redraw .7s cubic-bezier(.22,.61,.36,1); }
+@keyframes khz-redraw { 0% { background-size: 100% 1px; background-position: 100% 100%; }
+45% { background-size: 0% 1px; background-position: 100% 100%; } 46% { background-size: 0% 1px; background-position: 0% 100%; }
+100% { background-size: 100% 1px; background-position: 0% 100%; } }
+.ed-dark .online-shop-btn, .ed-dark.contact-section .signature-contact { background-image: linear-gradient(var(--on-plate), var(--on-plate));
+background-repeat: no-repeat; background-size: 100% 0%; background-position: 50% 100%;
+transition: background-size .5s cubic-bezier(.22,.61,.36,1), color .5s ease, border-color .5s ease !important; }
+.ed-dark .online-shop-btn:hover, .ed-dark.contact-section .signature-contact:hover { background-color: transparent !important; background-size: 100% 100%; }
+}
+@media (hover: none) {
+a:active, button:active, .images-portrait:active { opacity: .6; transition: opacity .1s; }
+}
+html body .poetry-section .poetry-line { color: #05080a; }
+html body .poetry-section .poetry-label { color: #05080a; }
+html body #about > p { color: #555555; }

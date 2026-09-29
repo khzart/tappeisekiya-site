@@ -541,3 +541,15 @@ window.addEventListener('load', () => {
   window.addEventListener('resize', queue);
   if ('ResizeObserver' in window) new ResizeObserver(queue).observe(document.body);
 })();
+
+// 09-30 MOTIONの静かな再生ボタン（素の再生バーの代わり）＝押すと音付きで再生・動画を押すと止まる・終わるとボタンが戻る
+(() => {
+  const fr = document.querySelector('.motion-frame'); if (!fr) return;
+  const v = fr.querySelector('.motion-video'), b = fr.querySelector('.motion-play'); if (!v || !b) return;
+  const show = (on) => { fr.classList.toggle('is-playing', on); b.textContent = v.ended ? 'Replay' : 'Play'; };
+  b.addEventListener('click', () => { v.muted = false; v.play(); });
+  v.addEventListener('click', () => { if (!v.paused) v.pause(); });
+  v.addEventListener('play', () => show(true));
+  v.addEventListener('pause', () => show(false));
+  v.addEventListener('ended', () => show(false));
+})();
