@@ -3452,13 +3452,13 @@ background-repeat: repeat, repeat, no-repeat !important;
 background-blend-mode: soft-light, soft-light, normal !important;
 }
 html body #motion {
-background-color: rgb(216, 214, 226);
+background-color: rgb(203, 200, 218);
 background-image: var(--wall-relief), var(--wall-mottle), linear-gradient(rgb(227, 226, 234), rgba(227, 226, 234, 0)) !important;
 }
 html body .cloth-row {
-background-image: var(--wall-relief), var(--wall-mottle), linear-gradient(rgb(216, 214, 226), rgba(216, 214, 226, 0)) !important;
+background-image: var(--wall-relief), var(--wall-mottle), linear-gradient(rgb(203, 200, 218), rgba(203, 200, 218, 0)) !important;
 }
 html:not(.tex-on) body :is(#motion, .cloth-row) { background-image: none !important; }
 html body #motion .motion-copy p:not(.ed-chapter),
 html body #motion figcaption,
-html body #motion .motion-caption { color: #585858; }
+html body #motion .motion-caption { color: #4d4d4d; }
