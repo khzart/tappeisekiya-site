@@ -3440,3 +3440,8 @@ background-blend-mode: soft-light, soft-light, normal !important;
 .contact-section.closing-editorial { background-image: var(--wall-relief), var(--wall-mottle), linear-gradient(rgb(219, 218, 228), rgba(219, 218, 228, 0)) !important; }
 .collection-item__name { word-break: auto-phrase; text-wrap: balance; }
 p, .poetry-line { text-wrap: pretty; }
+@media (min-width: 769px) {
+html body #motion { padding-left: 6vw; padding-right: 6vw; }
+html body #contact { padding: 10vw 6vw; }
+html body #stores .stockist-header { margin-bottom: 100px; }
+}
