@@ -3676,3 +3676,8 @@ html body .atelier-row, html body .cloth-row, html body #about, html body #philo
 html body #stores, html body .online-shop-section, html body #contact { padding-top: 80px !important; padding-bottom: 80px !important; }
 html body #images .images-layout { padding-top: 80px !important; padding-bottom: 80px !important; }
 }
+@media (max-width: 768px) {
+html body #about h1 { margin-bottom: 0 !important; }
+html body #about .poetry-divider { margin-top: 24px !important; margin-bottom: 0 !important; }
+html body #about .about-designer-statement { padding-top: 0 !important; margin-top: 36px !important; }
+}
