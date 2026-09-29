@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tappeisekiya.com/sitemap.xml
