@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script>
+      // 09-29 速度＝解析タグ(172KB)は最初の表示と取り合わせない＝読み込みが済んでから読む（計測は下の gtag() が溜めておく）
+      addEventListener('load', function () { setTimeout(function () {
+        var s = document.createElement('script'); s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-E9X6RZ1SRS'; document.head.appendChild(s);
+      }, 1200); });
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-E9X6RZ1SRS');
+      // 09-29 セクションごとの閲覧＝画面の中央線にかかったら1回だけ section_view
+      //       店舗・オンラインストア・お問い合わせのリンクは押されたら cta_click
+      addEventListener('DOMContentLoaded', function () {
+        if ('IntersectionObserver' in window) {
+          var io = new IntersectionObserver(function (es) {
+            es.forEach(function (e) {
+              if (!e.isIntersecting) return;
+              gtag('event', 'section_view', { section_id: e.target.id });
+              io.unobserve(e.target);
+            });
+          }, { rootMargin: '-50% 0px -50% 0px' });
+          document.querySelectorAll('section[id]').forEach(function (s) { io.observe(s); });
+        }
+        document.addEventListener('click', function (ev) {
+          var a = ev.target.closest && ev.target.closest('#stores a, #online-shop a, #contact a');
+          if (!a) return;
+          gtag('event', 'cta_click', { section_id: a.closest('section').id, link_url: a.href, link_text: (a.textContent || '').trim().slice(0, 60) });
+        });
+      });
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Collection | TAPPEI SEKIYA</title>
+    <link rel="preload" href="../fonts/cormorant_ac5feb95.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../fonts/inter_bec94a4d.woff2" as="font" type="font/woff2" crossorigin>
+    <!-- 09-29 Google Fonts と同じファイルを自前で配信（見た目は同一・外部への接続を2本減らす） -->
+    <style>/* cyrillic-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url(../fonts/cormorant_e4dc741c.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url(../fonts/cormorant_f0ca3ec9.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url(../fonts/cormorant_185c3409.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url(../fonts/cormorant_28d80079.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url(../fonts/cormorant_880eabe2.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/cormorant_e4dc741c.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/cormorant_f0ca3ec9.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/cormorant_185c3409.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/cormorant_28d80079.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/cormorant_880eabe2.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(../fonts/cormorant_68087e60.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(../fonts/cormorant_a1028863.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(../fonts/cormorant_4735e8ab.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(../fonts/cormorant_48072044.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(../fonts/cormorant_ac5feb95.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/cormorant_68087e60.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/cormorant_a1028863.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/cormorant_4735e8ab.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/cormorant_48072044.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/cormorant_ac5feb95.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(../fonts/cormorant_68087e60.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(../fonts/cormorant_a1028863.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(../fonts/cormorant_4735e8ab.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(../fonts/cormorant_48072044.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(../fonts/cormorant_ac5feb95.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(../fonts/inter_c428ca13.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(../fonts/inter_ec7f5af9.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(../fonts/inter_085cd790.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(../fonts/inter_4609148e.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(../fonts/inter_1f53bf00.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(../fonts/inter_367ba69a.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(../fonts/inter_bec94a4d.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/inter_c428ca13.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/inter_ec7f5af9.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/inter_085cd790.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/inter_4609148e.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/inter_1f53bf00.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/inter_367ba69a.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/inter_bec94a4d.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+    <link rel="stylesheet" href="../style.css" />
+    <!-- 09-13 トップと同じCDN3本。これが無いと main.js の1行目 gsap.registerPlugin で止まり、演出が全部死ぬ -->
+    <script defer src="../vendor/gsap.min.js"></script>
+    <script defer src="../vendor/ScrollTrigger.min.js"></script>
+    <script defer src="../vendor/lenis.min.js"></script>
+  </head>
+  <body class="collection-page">
+    <script>document.documentElement.classList.add('tex-on')</script>
+    <!-- 09-17 トップと同じ並び＝社名の版面を帯の上に置き、その下にメニュー（オーナー指摘の画面と同じ形） -->
+    <div class="collection-masthead">
+      <h1 class="brand-name">TAPPEI SEKIYA</h1>
+    </div>
+
+    <!-- Navigation / Header -->
+    <header class="header">
+      <div class="header-logo">
+        <a class='nav-wordmark' href='/'>TAPPEI SEKIYA</a>
+      </div>
+      <div class="lang-switch-mobile"><span class="nav-lang-active">JP</span><span class="nav-lang-divider">/</span><a href="../en/">EN</a></div>
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu">
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="header-nav">
+        <ul class="nav-menu" id="site-menu">
+          <li><a href='/#hero'>Top</a></li>
+          <li><a href='/#about'>About</a></li>
+          <li><a href='/#philosophy'>Philosophy</a></li>
+          <li><a href='/#images'>Images</a></li>
+          <li><a href='/#motion'>Motion</a></li>
+          <li><a href='/#stores'>Stores</a></li>
+          <li><a href="#online-shop">Online Shop</a></li>
+          <li><a href='/#contact'>Contact</a></li>
+          <li class="nav-lang"><span class="nav-lang-active">JP</span><span class="nav-lang-divider">/</span><a href="../en/">EN</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Collection Intro -->
+      <section class="collection-intro">
+        <h1 class="collection-intro__title">Collection</h1>
+        <div class="poetry-divider"></div>
+        <p class="collection-intro__lead">
+          一着ずつ、糸の向きから決めていく。<br class="mobile-only" />
+          その積み重ねだけが、<br class="mobile-only" />時間を超えるかたちになる。
+        </p>
+      </section>
+
+      <!-- Category Navigation -->
+      <nav class="collection-catnav" aria-label="Categories">
+        <ul>
+          <li><a href="#tops">Tops</a></li>
+          <li><a href="#bottoms">Bottoms</a></li>
+          <li><a href="#dresses">Dresses</a></li>
+          <li><a href="#accessories">Accessories</a></li>
+          <li><a href="#lace-art">Lace Art</a></li>
+        </ul>
+      </nav>
+
+      <!-- Tops -->
+      <section class="collection-category collection-category--a" id="tops">
+        <header class="collection-category__head">
+          <span class="collection-category__label">Tops</span>
+          <span class="collection-category__count">4 items</span>
+        </header>
+        <ul class="collection-grid">
+          <li class="collection-item">
+            <figure class="collection-item__media">
+              <img src="../images/archive_blouse.webp" alt="レース刺繍のブラウス" loading="lazy" decoding="async" />
+            </figure>
+            <div class="collection-item__meta">
+              <h2 class="collection-item__name">レース刺繍のブラウス</h2>
+              <p class="collection-item__note">コットン／ケミカルレース</p>
+            </div>
+          </li>
+          <li class="collection-item">
+            <figure class="collection-item__media">
+              <img src="../images/item_jacket_double.webp" alt="ダブルブレストジャケット" loading="lazy" decoding="async" />
+            </figure>
+            <div class="collection-item__meta">
+              <h2 class="collection-item__name">ダブルブレストジャケット</h2>
+              <p class="collection-item__note">リネン混／白刺繍</p>
+            </div>
+          </li>
+                  <li class="collection-item">
+            <figure class="collection-item__media">
+              <img src="../images/item_jacket_beige_lace.webp" alt="レース刺繍のジャケット" loading="lazy" decoding="async" />
+            </figure>
+            <div class="collection-item__meta">
+              <h2 class="collection-item__name">レース刺繍のジャケット</h2>
+              <p class="collection-item__note">ベージュ地／白刺繍</p>
+            </div>
+          </li>
+          <li class="collection-item">
+            <figure class="collection-item__media">
+              <img src="../images/item_top_lace_yoke.webp" alt="レースヨークのノースリーブトップ" loading="lazy" decoding="async" />
+            </figure>
+            <div class="collection-item__meta">
+              <h2 class="collection-item__name">レースヨークのノースリーブトップ</h2>
+              <p class="collection-item__note">白レースのモチーフ</p>
+            </div>
+          </li>
+</ul>
+      </section>
+
+      <!-- Bottoms -->
+      <section class="collection-category collection-category--b" id="bottoms">
+        <header class="collection-category__head">
+          <span class="collection-category__label">Bottoms</span>
+          <span class="collection-category__count">1 item</span>
+        </header>
+        <ul class="collection-grid">
+          <li class="collection-item">
+            <figure class="collection-item__media">
+              <img src="../images/item_skirt_cutwork.webp" alt="カットワーク刺繍のスカート" loading="lazy" decoding="async" />
+            </figure>
+            <div class="collection-item__meta">
+              <h2 class="collection-item__name">カットワーク刺繍のスカート</h2>
+              <p class="collection-item__note">ウール／白刺繍</p>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Dresses -->
+      <section class="collection-category collection-category--a" id="dresses">
+        <header class="collection-category__head">
+          <span class="collection-category__label">Dresses</span>
+          <span class="collection-category__count">3 items</span>
+        </header>
+        <ul class="collection-grid">
+          <li class="collection-item">
+            <figure class="collection-item__media">
+              <img src="../images/item_dress_funnel_cutwork.webp" alt="ファネルネックのカットワークドレス" loading="lazy" decoding="async" />
+            </figure>
+            <div class="collection-item__meta">
+              <h2 class="collection-item__name">ファネルネックのカットワークドレス</h2>
+              <p class="collection-item__note">ウール／白刺繍</p>
+            </div>
+          </li>
+          <li class="collection-item">
+            <figure class="collection-item__media">
+              <img src="../images/item_dress_tunic_cutwork.webp" alt="カットワーク刺繍のチュニックドレス" loading="lazy" decoding="async" />
+            </figure>
+            <div class="collection-item__meta">
+              <h2 class="collection-item__name">カットワーク刺繍のチュニックドレス</h2>
+              <p class="collection-item__note">ウール／白刺繍</p>
+            </div>
+          </li>
+                  <li class="collection-item">
+            <figure class="collection-item__media">
+              <img src="../images/item_dress_black.webp" alt="カットワーク刺繍のブラックドレス" loading="lazy" decoding="async" />
+            </figure>
+            <div class="collection-item__meta">
+              <h2 class="collection-item__name">カットワーク刺繍のブラックドレス</h2>
+              <p class="collection-item__note">黒／共色の刺繍</p>
+            </div>
+          </li>
+</ul>
+      </section>
+
+      <!-- Accessories -->
+      <section class="collection-category collection-category--b" id="accessories">
+        <header class="collection-category__head">
+          <span class="collection-category__label">Accessories</span>
+          <span class="collection-category__count">2 items</span>
+        </header>
+        <ul class="collection-grid">
+          <li class="collection-item">
+            <figure class="collection-item__media">
+              <img src="../images/archive_collar.webp" alt="シアーレースのつけ襟" loading="lazy" decoding="async" />
+            </figure>
+            <div class="collection-item__meta">
+              <h2 class="collection-item__name">シアーレースのつけ襟</h2>
+              <p class="collection-item__note">チュール／レース刺繍</p>
+            </div>
+          </li>
+                  <li class="collection-item">
+            <figure class="collection-item__media">
+              <img src="../images/item_collar_back_lace.webp" alt="背中のレースカラー" loading="lazy" decoding="async" />
+            </figure>
+            <div class="collection-item__meta">
+              <h2 class="collection-item__name">背中のレースカラー</h2>
+              <p class="collection-item__note">白レース</p>
+            </div>
+          </li>
+</ul>
+      </section>
+
+      <!-- Lace Art（着用しないレースの作品・インテリア） -->
+      <section class="collection-category collection-category--a" id="lace-art">
+        <header class="collection-category__head">
+          <span class="collection-category__label">Lace Art</span>
+          <span class="collection-category__count">7 items</span>
+        </header>
+        <ul class="collection-grid">
+          <li class="collection-item">
+            <figure class="collection-item__media">
+              <img src="../images/archive_lace_piece.webp" alt="アンティークレースのパネル" loading="lazy" decoding="async" />
+            </figure>
+            <div class="collection-item__meta">
+              <h2 class="collection-item__name">アンティークレースのパネル</h2>
+              <p class="collection-item__note">レース刺繍</p>
+            </div>
+          </li>
+          <li class="collection-item">
+            <figure class="collection-item__media">
+              <img src="../images/archive_gold_drape.webp" alt="レース刺繍のサテンクロス" loading="lazy" decoding="async" />
+            </figure>
+            <div class="collection-item__meta">
+              <h2 class="collection-item__name">レース刺繍のサテンクロス</h2>
+              <p class="collection-item__note">サテン／レース刺繍</p>
+            </div>
+          </li>
+                  <li class="collection-item">
+            <figure class="collection-item__media">
+              <img src="../images/lace_cloth_chair.webp" alt="レース縁のクロス" loading="lazy" decoding="async" />
+            </figure>
+            <div class="collection-item__meta">
+              <h2 class="collection-item__name">レース縁のクロス</h2>
+              <p class="collection-item__note">白／カットワークの縁飾り</p>
+            </div>
+          </li>
+          <li class="collection-item">
+            <figure class="collection-item__media">
+              <img src="../images/lace_rose_piece.webp" alt="レース刺繍のロゼのピース" loading="lazy" decoding="async" />
+            </figure>
+            <div class="collection-item__meta">
+              <h2 class="collection-item__name">レース刺繍のロゼのピース</h2>
+              <p class="collection-item__note">ロゼ／白刺繍</p>
+            </div>
+          </li>
+          <li class="collection-item">
+            <figure class="collection-item__media">
+              <img src="../images/lace_art_framed_03.webp" alt="額装のレースアート（縦）" loading="lazy" decoding="async" />
+            </figure>
+            <div class="collection-item__meta">
+              <h2 class="collection-item__name">額装のレースアート（縦）</h2>
+              <p class="collection-item__note">額装／白レース</p>
+            </div>
+          </li>
+          <li class="collection-item">
+            <figure class="collection-item__media">
+              <img src="../images/lace_art_framed_01.webp" alt="額装のレースアート（横）" loading="lazy" decoding="async" />
+            </figure>
+            <div class="collection-item__meta">
+              <h2 class="collection-item__name">額装のレースアート（横）</h2>
+              <p class="collection-item__note">額装／白レース</p>
+            </div>
+          </li>
+          <li class="collection-item">
+            <figure class="collection-item__media">
+              <img src="../images/lace_art_framed_02.webp" alt="額装のレースアート（意匠）" loading="lazy" decoding="async" />
+            </figure>
+            <div class="collection-item__meta">
+              <h2 class="collection-item__name">額装のレースアート（意匠）</h2>
+              <p class="collection-item__note">額装／白レース</p>
+            </div>
+          </li>
+</ul>
+      </section>
+
+      <section class="collection-back">
+        <a class='collection-back__link' href='/#images'>
+          <span>Back to Images</span>
+        </a>
+      </section>
+
+      <!-- 09-18 追加＝コレクションからそのままオンラインストアへ（オーナー指示）。
+           既存の .online-shop-section の見た目をそのまま使う＝新しい色も新しい部品も足していない。
+           戻す＝この<section>を消すだけ。 -->
+      <section class="online-shop-section ed-dark" id="online-shop">
+        <div class="online-shop-inner">
+          <span class="online-shop-label">Online Shop</span>
+          <p class="online-shop-text">気になる一着は、<br class="mobile-only" />オンラインストアで。</p>
+          <a href="https://caetla-online.katalok.ooo/ja" class="online-shop-btn" target="_blank" rel="noopener noreferrer">
+            <span>View Online Store</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M5 10h10M11 6l4 4-4 4" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-spacer" aria-hidden="true"></div>
+      <div class="footer-content">
+        <span class="footer-wordmark">TAPPEI SEKIYA</span>
+        <a
+          href="https://www.instagram.com/caetla_tappei_sekiya"
+          class="instagram-link"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="CAETLA Instagram"
+        >
+          <svg class="instagram-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+            <circle cx="12" cy="12" r="4"></circle>
+            <circle cx="17.5" cy="6.5" r="1.1"></circle>
+          </svg>
+        </a>
+        <div class="footer-parent-block">
+          <span class="footer-parent-label">A Line by</span>
+          <a href="https://caetla.co.jp/" class="footer-parent" target="_blank" rel="noopener noreferrer">
+            <span>株式会社さえら</span>
+            <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
+              <path d="M3 8L8 3M8 3H4M8 3V7" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+        <p class="copyright">&copy; 2026 TAPPEI SEKIYA. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script type="module" src="../main.js"></script>
+</body>
+</html>

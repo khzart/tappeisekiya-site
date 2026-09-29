@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script>
+      // 09-29 速度＝解析タグ(172KB)は最初の表示と取り合わせない＝読み込みが済んでから読む（計測は下の gtag() が溜めておく）
+      addEventListener('load', function () { setTimeout(function () {
+        var s = document.createElement('script'); s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-E9X6RZ1SRS'; document.head.appendChild(s);
+      }, 1200); });
+    </script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-E9X6RZ1SRS');
+      // 09-29 セクションごとの閲覧＝画面の中央線にかかったら1回だけ section_view
+      //       店舗・オンラインストア・お問い合わせのリンクは押されたら cta_click
+      addEventListener('DOMContentLoaded', function () {
+        if ('IntersectionObserver' in window) {
+          var io = new IntersectionObserver(function (es) {
+            es.forEach(function (e) {
+              if (!e.isIntersecting) return;
+              gtag('event', 'section_view', { section_id: e.target.id });
+              io.unobserve(e.target);
+            });
+          }, { rootMargin: '-50% 0px -50% 0px' });
+          document.querySelectorAll('section[id]').forEach(function (s) { io.observe(s); });
+        }
+        document.addEventListener('click', function (ev) {
+          var a = ev.target.closest && ev.target.closest('#stores a, #online-shop a, #contact a');
+          if (!a) return;
+          gtag('event', 'cta_click', { section_id: a.closest('section').id, link_url: a.href, link_text: (a.textContent || '').trim().slice(0, 60) });
+        });
+      });
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TAPPEI SEKIYA</title>
+    <link rel="preload" as="image" href="../images/hero_poster_sp.webp" media="(max-width: 600px)" fetchpriority="high">
+    <link rel="preload" as="image" href="../images/hero_poster_pc.webp" media="(min-width: 601px)" fetchpriority="high">
+    <link rel="preload" href="../fonts/cormorant_ac5feb95.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../fonts/inter_bec94a4d.woff2" as="font" type="font/woff2" crossorigin>
+    <!-- 09-29 Google Fonts と同じファイルを自前で配信（見た目は同一・外部への接続を2本減らす） -->
+    <style>/* cyrillic-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url(../fonts/cormorant_e4dc741c.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url(../fonts/cormorant_f0ca3ec9.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url(../fonts/cormorant_185c3409.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url(../fonts/cormorant_28d80079.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url(../fonts/cormorant_880eabe2.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/cormorant_e4dc741c.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/cormorant_f0ca3ec9.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/cormorant_185c3409.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/cormorant_28d80079.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/cormorant_880eabe2.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(../fonts/cormorant_68087e60.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(../fonts/cormorant_a1028863.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(../fonts/cormorant_4735e8ab.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(../fonts/cormorant_48072044.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(../fonts/cormorant_ac5feb95.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/cormorant_68087e60.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/cormorant_a1028863.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/cormorant_4735e8ab.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/cormorant_48072044.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/cormorant_ac5feb95.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(../fonts/cormorant_68087e60.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(../fonts/cormorant_a1028863.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(../fonts/cormorant_4735e8ab.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(../fonts/cormorant_48072044.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(../fonts/cormorant_ac5feb95.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(../fonts/inter_c428ca13.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(../fonts/inter_ec7f5af9.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(../fonts/inter_085cd790.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(../fonts/inter_4609148e.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(../fonts/inter_1f53bf00.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(../fonts/inter_367ba69a.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url(../fonts/inter_bec94a4d.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/inter_c428ca13.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/inter_ec7f5af9.woff2) format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/inter_085cd790.woff2) format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/inter_4609148e.woff2) format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/inter_1f53bf00.woff2) format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/inter_367ba69a.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(../fonts/inter_bec94a4d.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+    <link rel="stylesheet" href="../style.css" />
+
+    <script defer src="../vendor/gsap.min.js"></script>
+    <script defer src="../vendor/ScrollTrigger.min.js"></script>
+    <script defer src="../vendor/lenis.min.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-logo">
+        <a class='nav-wordmark' href='/en/'>TAPPEI SEKIYA</a>
+      </div>
+      <div class="lang-switch-mobile"><span class="nav-lang-active">EN</span><span class="nav-lang-divider">/</span><a href="../">JP</a></div>
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="site-menu">
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="header-nav">
+        <ul class="nav-menu" id="site-menu">
+          <li><a href="#hero">Top</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#philosophy">Philosophy</a></li>
+          <li><a href="#images">Images</a></li>
+          <li><a href="#motion">Motion</a></li>
+          <li><a href="#stores">Stores</a></li>
+          <li><a href="#online-shop">Online Shop</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li class="nav-lang"><span class="nav-lang-active">EN</span><span class="nav-lang-divider">/</span><a href="../">JP</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" id="hero">
+        <div class="hero-image-container">
+          <!-- 09-17 ヒーロー＝背景は原画のまま静止、切り抜いたモデルだけが動く（AEで作成・生成AIは不使用）。
+               戻す＝この<video>を削除するだけ（<picture>は1文字も触っていない） -->
+          <video class="hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1">
+            <!-- 09-17 夜＝1080p化に伴い mp4 を先にした。実測＝同じコマで鮮鋭さ mp4 24.15 / webm(VP9 crf24) 21.78。
+                 mp4(H.264) は全ブラウザが再生できるので、webm は残すだけの控え -->
+            <source data-src="../video/hero_loop_sp.mp4" type="video/mp4" data-sp />
+            <source data-src="../video/hero_loop.mp4" type="video/mp4" />
+            <source data-src="../video/hero_loop.webm" type="video/webm" />
+          </video>
+          <script>(function(v){var sp=matchMedia('(max-width: 600px)').matches;v.poster='../images/'+(sp?'hero_poster_sp.webp':'hero_poster_pc.webp');})(document.querySelector('.hero-video'));
+          (function(r,v){var on=function(){r.classList.add('tex-on')};if(v)v.addEventListener('playing',on,{once:true});addEventListener('scroll',on,{once:true,passive:true});addEventListener('touchstart',on,{once:true,passive:true});setTimeout(on,2500);})(document.documentElement,document.querySelector('.hero-video'));</script>
+          <picture>
+            <source media="(max-width: 600px)" srcset="../images/hero_poster_sp.webp" />
+            <img src="../images/hero_poster_pc.webp" alt="Top Image" class="hero-img" fetchpriority="high" decoding="async" />
+          </picture>
+        </div>
+        <div class="hero-text-container">
+          <div class="brand-title">
+            <h1 class="brand-name">
+              <span class="brand-line brand-line--first">TAPPEI</span>
+              <span class="brand-line brand-line--second">SEKIYA</span>
+            </h1>
+          </div>
+        </div>
+      </section>
+
+      <!-- 09-13 II — The Room＝先方支給の実写3点（引き→正面→寄り）。戻す時はこのsectionごと削除 -->
+      <!-- 09-17 I — The Veil＝先方支給の実写を1枚だけで見せる図版（黒の見開き）。戻す時はこのsectionごと削除 -->
+      <section class="ed-plate ed-dark" aria-label="The Veil">
+        <p class="ed-chapter"><span class="ed-chapter__num">I</span>The Veil</p>
+        <figure class="ed-plate__figure">
+          <img src="../images/_opt/ed_veil.webp" alt="A lace veil turned to the window light" loading="lazy" decoding="async" />
+        </figure>
+        <p class="ed-plate__note">Light changes its shape for every hole in the lace.</p>
+      </section>
+      <section class="atelier-row ed-dark" aria-label="The Room">
+        <p class="atelier-row__chapter ed-chapter"><span class="ed-chapter__num">II</span>The Room</p>
+        <div class="atelier-row__grid">
+          <figure><img src="../images/_opt/atelier_room_wide.webp" alt="窓辺の光に立つレースのドレス" loading="lazy" decoding="async" /></figure>
+          <figure><img src="../images/_opt/atelier_front_blue.webp" alt="青い光の中のレースのブラウスとパンツ" loading="lazy" decoding="async" /></figure>
+          <figure><img src="../images/_opt/atelier_cloth_close.webp" alt="吊られたレースの衣" loading="lazy" decoding="async" /></figure>
+        </div>
+      </section>
+      <section class="positioning-statement" aria-label="Brand positioning">
+        <div class="positioning-statement__inner">
+          <p class="positioning-statement__eyebrow">A Signature Line from CAETLA</p>
+          <p class="positioning-statement__lead">
+            The lace aesthetic cultivated by CAETLA Co., Ltd.<br />
+            over half a century.<br />
+            A special line that entrusts its inheritance and reinterpretation<br />
+            to the name of one designer.
+          </p>
+        </div>
+      </section>
+
+      <section id="about" class="page-hero">
+        <h1>About the Brand</h1>
+        <div class="poetry-divider"></div>
+        <p>Since 1974 in Okayama,<br><a href="https://caetla.co.jp/" class="about-parent-link" target="_blank" rel="noopener noreferrer">CAETLA Co., Ltd.</a> has pursued lace and embroidery for half a century.</p>
+        <p>TAPPEI SEKIYA was born<br>as the culmination of that aesthetic.</p>
+        <p>From the place where inherited craftsmanship<br>meets contemporary beauty.</p>
+        <p>A single thread, millimeter-scale devotion,<br>and handwork carrying the weight of time.</p>
+        <p>The garments that emerge resonate with the wearer,<br>becoming singular sculptures that cast a quiet light.</p>
+        <div class="about-designer-statement">
+          <p class="about-designer-statement__lead">Lace is not decoration.</p>
+          <p>
+            Designer Tappei Sekiya sees the time held in each stitch<br />
+            as a form shaped by the body, light, air, and silence.
+          </p>
+          <p>
+            That is why CAETLA's craft, through his name,<br />
+            is renewed as clothing for a new era.
+          </p>
+        </div>
+
+        <div class="img-block">
+          <img src="../images/_opt/about_portrait.webp" alt="Designer Tappei Sekiya" class="about-image" loading="lazy" decoding="async" />
+        </div>
+        <p class="about-credit"><span class="about-credit-role">Designed by</span>Tappei Sekiya</p>
+      </section>
+
+      <section id="philosophy" class="poetry-section">
+        <div class="giant-chapter outline-text" style="top: 15%; left: 5%;">PHILOSOPHY</div>
+
+        <div class="poetry-header">
+          <span class="poetry-label">Philosophy</span>
+          <div class="poetry-divider"></div>
+        </div>
+
+        <div class="poetry-text">
+          <span class="poetry-line">Why is this lace here.</span><br class="desktop-only"/>
+          <span class="poetry-line">Why does this thread run in this direction.</span><br class="desktop-only"/>
+          <span class="poetry-line">A garment should not be an answer,</span>
+          <span class="poetry-line">but a question.</span><br class="desktop-only"/>
+          <span class="poetry-line">Something that leaves a quiet inquiry</span>
+          <span class="poetry-line">within the one who wears it.</span><br class="desktop-only"/>
+          <span class="poetry-line">Only that transcends time.</span>
+        </div>
+
+        <div class="philosophy-gallery philosophy-gallery--archive">
+          <div class="img-block">
+            <img src="../images/_opt/archive_blouse.webp" alt="Embroidered lace blouse on a brass hanger" loading="lazy" decoding="async" style="object-fit: cover; object-position: center;" />
+          </div>
+          <div class="img-block">
+            <img src="../images/_opt/archive_lace_piece.webp" alt="Antique lace panel laid on dark drapery" loading="lazy" decoding="async" style="object-fit: cover; object-position: center;" />
+          </div>
+          <div class="img-block">
+            <img src="../images/_opt/archive_dress.webp" alt="Ivory dress with cord embroidery on a brass hanger" loading="lazy" decoding="async" style="object-fit: cover; object-position: center;" />
+          </div>
+          <div class="img-block">
+            <img src="../images/_opt/archive_collar.webp" alt="Sheer lace collar piece on a brass hanger" loading="lazy" decoding="async" style="object-fit: cover; object-position: center;" />
+          </div>
+          <div class="img-block">
+            <img src="../images/_opt/archive_gold_drape.webp" alt="Champagne satin cloth with lace embroidery draped over a wooden table" loading="lazy" decoding="async" style="object-fit: cover; object-position: center;" />
+          </div>
+
+          <!-- 09-17 追加＝先方の物撮り3点（`images/_ig_2026-08-07/` 23/22/27）。黒地・静物＝既存5点と同じ語彙。戻す時はこの3ブロックを削除 -->
+          <div class="img-block">
+            <img src="../images/_opt/archive_rose_lace.webp" alt="Rose-toned lace piece on dark drapery" loading="lazy" decoding="async" style="object-fit: cover; object-position: center;" />
+          </div>
+          <div class="img-block">
+            <img src="../images/_opt/archive_jacket_beige.webp" alt="Beige jacket with white lace appliqué on a brass hanger" loading="lazy" decoding="async" style="object-fit: cover; object-position: center;" />
+          </div>
+          <div class="img-block">
+            <img src="../images/_opt/archive_cloth_chair.webp" alt="Lace-edged cloth draped over a wooden chair" loading="lazy" decoding="async" style="object-fit: cover; object-position: center;" />
+          </div>
+          <div class="img-block">
+            <img src="../images/_opt/archive_skirt_cutwork.webp" alt="Ivory skirt with cutwork embroidery on a wooden hanger" loading="lazy" decoding="async" style="object-fit: cover; object-position: center;" />
+          </div>
+          <div class="img-block">
+            <img src="../images/_opt/archive_blazer.webp" alt="Cream double-breasted blazer on a brass hanger" loading="lazy" decoding="async" style="object-fit: cover; object-position: center;" />
+          </div>
+          <div class="img-block">
+            <img src="../images/_opt/archive_tunic_long.webp" alt="Long ivory tunic with cutwork embroidery on a brass hanger" loading="lazy" decoding="async" style="object-fit: cover; object-position: center;" />
+          </div>
+        </div>
+      </section>
+
+      <!-- 09-17 III — The Light＝人も服も無い一枚。戻す時はこのsectionごと削除 -->
+      <section class="ed-interlude ed-dark" aria-label="The Light">
+        <figure class="ed-interlude__figure">
+          <img src="../images/ed_room_empty.webp" alt="Window light falling into an empty room" loading="lazy" decoding="async" />
+        </figure>
+        <div class="ed-interlude__copy">
+          <p class="ed-chapter"><span class="ed-chapter__num">III</span>The Light</p>
+          <!-- 09-18 オーナー指示でこの一文を消した（章表記「III The Light」は残す） -->
+        </div>
+      </section>
+
+      <!-- 09-18 オーナー指示で Unveiling（レースの重なり）節を外した。画像とCSSは消していない。 -->
+
+      <section class="images-section ed-dark" id="images">
+        <div class="images-layout">
+          <div class="images-copy">
+            <p class="ed-chapter"><span class="ed-chapter__num">IV</span>Images</p>
+            <span class="images-label">Images</span>
+            <p>Through the lace, the silhouette of the wearer emerges. Beauty exists between the visible and the invisible.</p>
+          </div>
+          <div class="images-gallery">
+            <figure class="images-portrait">
+              <a class="images-portrait__link" href="../collection/" aria-label="コレクションを見る"><img src="../images/look_window_light.webp" alt="窓辺の光に透けるレースのドレス" loading="lazy" decoding="async" /></a>
+            </figure>
+            <figure class="images-portrait">
+              <a class="images-portrait__link" href="../collection/" aria-label="コレクションを見る"><img src="../images/look_white_smocking.webp" alt="スモッキングとパフスリーブの白いドレス" loading="lazy" decoding="async" /></a>
+            </figure>
+            <figure class="images-portrait">
+              <a class="images-portrait__link" href="../collection/" aria-label="コレクションを見る"><img src="../images/look_red_back.webp" alt="レース刺繍を背に配した赤いドレス" loading="lazy" decoding="async" /></a>
+            </figure>
+            <figure class="images-portrait">
+              <a class="images-portrait__link" href="../collection/" aria-label="コレクションを見る"><img src="../images/look_olive_floral.webp" alt="立体的な花の刺繍とオリーブのドレス" loading="lazy" decoding="async" /></a>
+            </figure>
+            <figure class="images-portrait">
+              <a class="images-portrait__link" href="../collection/" aria-label="コレクションを見る"><img src="../images/look_dark_lace.webp" alt="暗がりに浮かぶ白いレースの胸当て" loading="lazy" decoding="async" /></a>
+            </figure>
+            <figure class="images-portrait">
+              <a class="images-portrait__link" href="../collection/" aria-label="コレクションを見る"><img src="../images/look_hall_standing.webp" alt="廃墟の広間の窓辺に立つ白いドレス" loading="lazy" decoding="async" /></a>
+            </figure>
+          </div>
+        </div>
+
+      </section>
+      <!-- 09-17 追加＝MOTION（オーナー指示「モーションというセクションを作って動画を置いて」）。
+           中身＝このサイトに載っている実写7点をFlowのi2vで動かし、30秒に編集したフィルム。
+           戻す＝このsectionと style.css の「MOTION」ブロック、メニューの Motion 1項目を削除するだけ -->
+      <section class="motion-section ed-dark" id="motion">
+        <div class="motion-copy">
+          <p class="ed-chapter"><span class="ed-chapter__num">V</span>Motion</p>
+          <span class="motion-label">Motion</span>
+          <p>A still frame begins to breathe.<br class="mobile-only" />Cloth takes the draft; the light moves slowly.</p>
+        </div>
+        <figure class="motion-frame">
+          <video class="motion-video" controls playsinline preload="none" poster="../images/motion_poster.webp">
+            <source src="../video/motion.mp4" type="video/mp4" />
+          </video>
+          <!-- 09-28 スマホはMOTIONを720p（9.4→3.7MB）。load()を呼ばない＝再生を押すまで読まない（呼ぶと押す前に読み始めた） -->
+          <script>(function(v){if(v&&matchMedia('(max-width: 600px)').matches){var s=v.querySelector('source');s.setAttribute('src','../video/motion_sp.mp4');}})(document.querySelector('.motion-video'));</script>
+          <figcaption class="motion-caption">TAPPEI SEKIYA — Motion｜19 seconds</figcaption>
+        </figure>
+      </section>
+
+      <!-- 09-13 III — The Cloth＝先方支給の実写3点（布と光）。戻す時はこのsectionごと削除 -->
+      <section class="cloth-row ed-dark" aria-label="The Cloth">
+        <p class="cloth-row__chapter ed-chapter"><span class="ed-chapter__num">VI</span>The Cloth</p>
+        <div class="cloth-row__grid">
+          <figure><img src="../images/cloth_window.webp" alt="窓辺に掛けられたレースの衣" loading="lazy" decoding="async" /></figure>
+          <figure><img src="../images/cloth_hang.webp" alt="吊られたレースの衣の重なり" loading="lazy" decoding="async" /></figure>
+          <figure><img src="../images/cloth_macro.webp" alt="レースの拡大" loading="lazy" decoding="async" /></figure>
+        </div>
+      </section>
+      <section class="stockist-section ed-dark" id="stores">
+        <div class="stockist-inner">
+          <div class="stockist-header">
+            <p class="ed-chapter ed-chapter--center"><span class="ed-chapter__num">VII</span>Stores</p>
+            <span class="images-label">Stores</span>
+          </div>
+          <div class="stockist-grid">
+            <article class="stockist-card">
+              <p class="stockist-zip">〒100-0011</p>
+              <h3 class="stockist-name">CAETLA Imperial Hotel Tokyo</h3>
+              <p class="stockist-address">1-1-1 Uchisaiwaicho, Chiyoda-ku, Tokyo<br>Imperial Hotel Main Building B1F Arcade</p>
+              <dl class="stockist-details">
+                <div><dt>TEL</dt><dd>03-3591-5050</dd></div>
+                <div><dt>OPEN</dt><dd>10:00 ~ 19:00</dd></div>
+                <div><dt>Closed</dt><dd>Irregular</dd></div>
+              </dl>
+              <a href="https://www.google.com/maps/search/?api=1&query=帝国ホテル東京+千代田区内幸町1-1-1" class="stockist-map" target="_blank" rel="noopener noreferrer">ACCESS: MAP</a>
+            </article>
+            <article class="stockist-card">
+              <p class="stockist-zip">〒100-0011</p>
+              <h3 class="stockist-name">CAETLA Imperial Hotel Plaza Tokyo</h3>
+              <p class="stockist-address">1-1-1 Uchisaiwaicho, Chiyoda-ku, Tokyo<br>Imperial Hotel Plaza 1F</p>
+              <dl class="stockist-details">
+                <div><dt>TEL</dt><dd>080-5873-1483</dd></div>
+                <div><dt>OPEN</dt><dd>13:00 ~ 19:00</dd></div>
+                <div><dt>Closed</dt><dd>Wednesday</dd></div>
+              </dl>
+              <a href="https://www.google.com/maps/search/?api=1&query=帝国ホテルプラザ東京+千代田区内幸町1-1-1" class="stockist-map" target="_blank" rel="noopener noreferrer">ACCESS: MAP</a>
+            </article>
+            <article class="stockist-card">
+              <p class="stockist-zip">〒460-0008</p>
+              <h3 class="stockist-name">CAETLA Hilton Plaza Nagoya</h3>
+              <p class="stockist-address">1-3-3 Sakae, Naka-ku, Nagoya, Aichi<br>Hilton Plaza Nagoya B1F</p>
+              <dl class="stockist-details">
+                <div><dt>TEL</dt><dd>052-307-0245</dd></div>
+                <div><dt>OPEN</dt><dd>11:00 ~ 18:00</dd></div>
+                <div><dt>Closed</dt><dd>Wednesday</dd></div>
+              </dl>
+              <a href="https://www.google.com/maps/search/?api=1&query=名古屋ヒルトンプラザ+名古屋市中区栄1-3-3" class="stockist-map" target="_blank" rel="noopener noreferrer">ACCESS: MAP</a>
+            </article>
+            <article class="stockist-card">
+              <p class="stockist-zip">〒530-0042</p>
+              <h3 class="stockist-name">CAETLA Imperial Hotel Osaka</h3>
+              <p class="stockist-address">1-8-50 Tenmabashi, Kita-ku, Osaka<br>Imperial Hotel Osaka B1F</p>
+              <dl class="stockist-details">
+                <div><dt>TEL</dt><dd>06-6809-6568</dd></div>
+                <div><dt>OPEN</dt><dd>11:00 ~ 18:30</dd></div>
+                <div><dt>Closed</dt><dd>Monday</dd></div>
+              </dl>
+              <a href="https://www.google.com/maps/search/?api=1&query=帝国ホテル大阪+大阪市北区天満橋1-8-50" class="stockist-map" target="_blank" rel="noopener noreferrer">ACCESS: MAP</a>
+            </article>
+            <article class="stockist-card">
+              <p class="stockist-zip">〒980-0014</p>
+              <h3 class="stockist-name">Sendai CAETLA</h3>
+              <p class="stockist-address">2-17-1 Honcho, Aoba-ku, Sendai, Miyagi<br>Honcho N Building 1F</p>
+              <dl class="stockist-details">
+                <div><dt>TEL</dt><dd>022-215-0780</dd></div>
+                <div><dt>OPEN</dt><dd>10:00 ~ 19:00</dd></div>
+                <div><dt>Closed</dt><dd>Wednesday</dd></div>
+              </dl>
+              <a href="https://www.google.com/maps/search/?api=1&query=仙台市青葉区本町2-17-1+本町Nビル" class="stockist-map" target="_blank" rel="noopener noreferrer">ACCESS: MAP</a>
+            </article>
+            <article class="stockist-card">
+              <p class="stockist-zip">〒840-0826</p>
+              <h3 class="stockist-name">Saga CAETLA</h3>
+              <p class="stockist-address">1-1-11 Shirayama, Saga City, Saga<br>Futagami Building 1F</p>
+              <dl class="stockist-details">
+                <div><dt>TEL</dt><dd>0952-26-3320</dd></div>
+                <div><dt>OPEN</dt><dd>10:00 ~ 19:00</dd></div>
+                <div><dt>Closed</dt><dd>Tuesday</dd></div>
+              </dl>
+              <a href="https://www.google.com/maps/search/?api=1&query=佐賀市白山1-1-11+二神ビル" class="stockist-map" target="_blank" rel="noopener noreferrer">ACCESS: MAP</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="online-shop-section ed-dark" id="online-shop">
+        <div class="online-shop-inner">
+          <span class="online-shop-label">Online Shop</span>
+          <p class="online-shop-text">The full collection, anytime, anywhere.</p>
+          <a href="https://caetla-online.katalok.ooo/ja" class="online-shop-btn" target="_blank" rel="noopener noreferrer">
+            <span>View Collection</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <path d="M5 10h10M11 6l4 4-4 4" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+      </section>
+
+      <section class="closing-editorial contact-section ed-dark" id="contact" aria-label="Contact">
+        <div class="closing-editorial__copy">
+          <span class="images-label">Contact</span>
+          <p>In silence lies the deepest dialogue — into the stillness between you and a single garment.<br>For inquiries, stockist information, or any questions, please do not hesitate to reach out.</p>
+          <a href="https://caetla.co.jp/inquiry" class="signature-contact" target="_blank" rel="noopener noreferrer">Contact</a>
+        </div>
+        <figure class="closing-editorial__image">
+          <img src="../images/lace_art_framed_02.webp" loading="lazy" decoding="async" alt="Lace artwork in a dark frame beside dried flowers on a shelf" />
+        </figure>
+      </section>
+
+    </main>
+
+    <!-- 09-17 閉じの空＝先方支給 IMG_5353。戻す時はこのfigureごと削除 -->
+    <figure class="ed-sky" aria-hidden="true">
+      <img src="../images/ed_sky.webp" alt="" loading="lazy" decoding="async" />
+    </figure>
+    <footer class="footer ed-dark">
+      <div class="footer-spacer" aria-hidden="true"></div>
+      <div class="footer-content">
+        <span class="footer-wordmark">TAPPEI SEKIYA</span>
+        <a
+          href="https://www.instagram.com/caetla_tappei_sekiya"
+          class="instagram-link"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="CAETLA Instagram"
+        >
+          <svg class="instagram-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+            <circle cx="12" cy="12" r="4"></circle>
+            <circle cx="17.5" cy="6.5" r="1.1"></circle>
+          </svg>
+        </a>
+        <div class="footer-parent-block">
+          <span class="footer-parent-label">A Line by</span>
+          <a href="https://caetla.co.jp/" class="footer-parent" target="_blank" rel="noopener noreferrer">
+            <span>CAETLA Co., Ltd.</span>
+            <svg width="11" height="11" viewBox="0 0 11 11" fill="none" aria-hidden="true">
+              <path d="M3 8L8 3M8 3H4M8 3V7" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+        <p class="copyright">&copy; 2026 TAPPEI SEKIYA. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script type="module" src="../main.js"></script>
+</body>
+</html>
