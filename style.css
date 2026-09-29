@@ -3702,3 +3702,13 @@ html body .ed-sky img {
 -webkit-mask-image: linear-gradient(180deg, transparent 0%, transparent 8%, #000 38%, #000 58%, transparent 92%, transparent 100%) !important;
 mask-image: linear-gradient(180deg, transparent 0%, transparent 8%, #000 38%, #000 58%, transparent 92%, transparent 100%) !important;
 }
+html[lang="en"] body .about-designer-statement p:not(.about-designer-statement__lead),
+html[lang="en"] body .images-copy .section-line, html[lang="en"] body .motion-copy .section-line,
+html[lang="en"] body .online-shop-text, html[lang="en"] body #contact .contact-note,
+html[lang="en"] body #philosophy .poetry-line {
+letter-spacing: 0.02em !important; line-height: 1.8 !important; text-wrap: balance;
+}
+html[lang="en"] body .about-designer-statement__lead { letter-spacing: 0.03em !important; }
+@media (max-width: 768px) {
+html[lang="en"] body #about .about-designer-statement { margin-left: -40px !important; margin-right: -40px !important; }
+}
