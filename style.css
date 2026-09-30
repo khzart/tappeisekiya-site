@@ -3712,3 +3712,9 @@ html[lang="en"] body .about-designer-statement__lead { letter-spacing: 0.03em !i
 @media (max-width: 768px) {
 html[lang="en"] body #about .about-designer-statement { margin-left: -40px !important; margin-right: -40px !important; }
 }
+@media (max-width: 768px) {
+.hero-video { background: url('images/hero_poster_pc.webp') center / cover no-repeat; }
+}
+@media (max-width: 600px) {
+.hero-video { background-image: url('images/hero_poster_sp.webp'); }
+}
