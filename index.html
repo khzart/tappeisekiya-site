@@ -433,7 +433,7 @@
                枠・収め方を変えないため <video> は残し、動画の source と autoplay/loop を外した。
                戻す＝下の3行の source（data-src）と autoplay loop を元に戻す（hero_loop_sp.mp4 / hero_loop.mp4 / hero_loop.webm） -->
           <video class="hero-video" muted playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
-          <script>(function(v){var sp=matchMedia('(max-width: 600px)').matches;v.poster='./images/'+(sp?'hero_sp_full.webp':'hero_poster_pc.webp');})(document.querySelector('.hero-video'));
+          <script>(function(v){var sp=matchMedia('(max-width: 600px)').matches,tab=!sp&&matchMedia('(max-width: 1366px) and (orientation: portrait)').matches;v.poster='./images/'+(sp?'hero_sp_full.webp':tab?'hero_veil.webp':'hero_poster_pc.webp');})(document.querySelector('.hero-video'));
           (function(r,v){var on=function(){r.classList.add('tex-on')};if(v)v.addEventListener('playing',on,{once:true});addEventListener('scroll',on,{once:true,passive:true});addEventListener('touchstart',on,{once:true,passive:true});setTimeout(on,2500);})(document.documentElement,document.querySelector('.hero-video'));</script>
           <picture>
             <source media="(max-width: 600px)" srcset="./images/hero_sp_full.webp" />

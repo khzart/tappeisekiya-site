@@ -479,19 +479,23 @@ window.addEventListener('load', () => {
   //   ∴ 幅が変わるたびに合う方へ差し替える（CSS 側も cover にして、どの組み合わせでも伸びない）。
   const mq = matchMedia('(max-width: 600px)');
   const srcs = [...v.querySelectorAll('source[data-src]')].map((s) => ({ el: s, url: s.dataset.src, sp: s.hasAttribute('data-sp'), type: s.type }));
+  // 10-28 縦持ちのタブレット（iPad）は全身の元写真を表紙に＝向きが変わるたびに選び直す
+  const mt = matchMedia('(max-width: 1366px) and (orientation: portrait)');
   let current = null;
   const pick = () => {
     const sp = mq.matches;
-    if (current === sp) return;
-    current = sp;
+    const tab = !sp && mt.matches;
+    const key = sp ? 'sp' : tab ? 'tab' : 'pc';
+    if (current === key) return;
+    current = key;
     v.querySelectorAll('source').forEach((s) => s.remove());
     // 09-28 スマホは中央を切り出した縦の動画（608×1080・1.4MB）だけ、PCは元の16:9（4.6MB）だけ
     srcs.filter((s) => s.sp === sp).forEach((s) => { const el = document.createElement('source'); el.src = s.url; el.type = s.type; v.appendChild(el); });
-    v.poster = (location.pathname.includes('/en/') ? '../images/' : './images/') + (sp ? 'hero_sp_full.webp' : 'hero_poster_pc.webp');
+    v.poster = (location.pathname.includes('/en/') ? '../images/' : './images/') + (sp ? 'hero_sp_full.webp' : tab ? 'hero_veil.webp' : 'hero_poster_pc.webp');
     v.load();
     v.play().catch(() => {});
   };
-  const start = () => { pick(); mq.addEventListener('change', pick); };
+  const start = () => { pick(); mq.addEventListener('change', pick); mt.addEventListener('change', pick); };
   // 09-28③ 実測（スマホ5回ずつ）＝load前に始めると他の読み込みと取り合って遅い回が出た。load後に単独で読むのが最も安定
   if (document.readyState === 'complete') start();
   else window.addEventListener('load', start, { once: true });

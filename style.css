@@ -3730,3 +3730,17 @@ object-position: 50% 80% !important;
 }
 .hero-image-container .hero-img { object-position: 50% 80%; }
 }
+@media (min-width: 601px) and (max-width: 1366px) and (orientation: portrait) {
+.hero-video {
+background-image: url('images/hero_veil.webp');
+background-position: 50% 92%;
+object-position: 50% 92% !important;
+}
+}
+@media (min-width: 769px) and (max-width: 1366px) and (orientation: portrait) {
+.hero-video {
+aspect-ratio: auto;
+height: calc(100svh - 176px);
+object-fit: cover !important;
+}
+}
