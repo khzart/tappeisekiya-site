@@ -574,7 +574,12 @@
         <figure class="motion-frame">
           <!-- 10-27 オーナー指示「間の動画も静止画にして」＝写真の権利確認が済むまで動画（motion.mp4）を外し、元写真（ed_veil の16:9切り）を置いた。
                戻す＝この img を元の <video class="motion-video">＋スマホ用 script＋<button class="motion-play"> に戻す（git 10-27 以前） -->
-          <img class="motion-video" src="../images/motion_still.webp" alt="Profile beneath a lace veil" width="1200" height="675" loading="lazy" decoding="async" />
+          <!-- 10-28 オーナー指示「動画のところ！！」「カバーは今の画像のままで」＝レース映像15秒（video/_gen1027）を入れ、表紙は motion_still.webp のまま -->
+          <video class="motion-video" playsinline preload="none" poster="../images/motion_still.webp">
+            <source src="../video/lace.mp4" type="video/mp4" />
+          </video>
+          <script>(function(v){if(v&&matchMedia('(max-width: 600px)').matches){var s=v.querySelector('source');s.setAttribute('src','../video/lace_sp.mp4');}})(document.querySelector('.motion-video'));</script>
+          <button class="motion-play" type="button" aria-label="Play the film">Play</button>
         </figure>
       </section>
 
