@@ -57,7 +57,7 @@
     <meta property="og:image:height" content="630">
     <meta property="og:locale" content="en_US">
     <meta name="twitter:card" content="summary_large_image">
-    <link rel="preload" as="image" href="../images/hero_poster_sp.webp" media="(max-width: 600px)" fetchpriority="high">
+    <link rel="preload" as="image" href="../images/hero_sp_full.webp" media="(max-width: 600px)" fetchpriority="high">
     <link rel="preload" as="image" href="../images/hero_poster_pc.webp" media="(min-width: 601px)" fetchpriority="high">
     <link rel="preload" href="../fonts/cormorant_ac5feb95.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="../fonts/inter_bec94a4d.woff2" as="font" type="font/woff2" crossorigin>
@@ -454,10 +454,10 @@
                枠・収め方を変えないため <video> は残し、動画の source と autoplay/loop を外した。
                戻す＝下の3行の source（data-src）と autoplay loop を元に戻す（hero_loop_sp.mp4 / hero_loop.mp4 / hero_loop.webm） -->
           <video class="hero-video" muted playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
-          <script>(function(v){var sp=matchMedia('(max-width: 600px)').matches;v.poster='../images/'+(sp?'hero_poster_sp.webp':'hero_poster_pc.webp');})(document.querySelector('.hero-video'));
+          <script>(function(v){var sp=matchMedia('(max-width: 600px)').matches;v.poster='../images/'+(sp?'hero_sp_full.webp':'hero_poster_pc.webp');})(document.querySelector('.hero-video'));
           (function(r,v){var on=function(){r.classList.add('tex-on')};if(v)v.addEventListener('playing',on,{once:true});addEventListener('scroll',on,{once:true,passive:true});addEventListener('touchstart',on,{once:true,passive:true});setTimeout(on,2500);})(document.documentElement,document.querySelector('.hero-video'));</script>
           <picture>
-            <source media="(max-width: 600px)" srcset="../images/hero_poster_sp.webp" />
+            <source media="(max-width: 600px)" srcset="../images/hero_sp_full.webp" />
             <img src="../images/hero_poster_pc.webp" alt="Top Image" class="hero-img" fetchpriority="high" decoding="async" />
           </picture>
         </div>

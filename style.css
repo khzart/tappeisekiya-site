@@ -3722,3 +3722,11 @@ html[lang="en"] body #about .about-designer-statement { margin-left: -40px !impo
 @media (max-width: 600px) {
 .hero-video { background-image: url('images/hero_poster_sp.webp'); }
 }
+@media (max-width: 600px) {
+.hero-video {
+background-image: url('images/hero_sp_full.webp');
+background-position: 50% 80%;
+object-position: 50% 80% !important;
+}
+.hero-image-container .hero-img { object-position: 50% 80%; }
+}
