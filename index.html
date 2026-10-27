@@ -429,13 +429,10 @@
         <div class="hero-image-container">
           <!-- 09-17 ヒーロー＝背景は原画のまま静止、切り抜いたモデルだけが動く（AEで作成・生成AIは不使用）。
                戻す＝この<video>を削除するだけ（<picture>は1文字も触っていない） -->
-          <video class="hero-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true" tabindex="-1">
-            <!-- 09-17 夜＝1080p化に伴い mp4 を先にした。実測＝同じコマで鮮鋭さ mp4 24.15 / webm(VP9 crf24) 21.78。
-                 mp4(H.264) は全ブラウザが再生できるので、webm は残すだけの控え -->
-            <source data-src="./video/hero_loop_sp.mp4" type="video/mp4" data-sp />
-            <source data-src="./video/hero_loop.mp4" type="video/mp4" />
-            <source data-src="./video/hero_loop.webm" type="video/webm" />
-          </video>
+          <!-- 10-27 オーナー指示「動画を静止画に直し」＝写真の権利確認が済むまで動画を止め、元写真（poster）だけを出す。
+               枠・収め方を変えないため <video> は残し、動画の source と autoplay/loop を外した。
+               戻す＝下の3行の source（data-src）と autoplay loop を元に戻す（hero_loop_sp.mp4 / hero_loop.mp4 / hero_loop.webm） -->
+          <video class="hero-video" muted playsinline preload="none" aria-hidden="true" tabindex="-1"></video>
           <script>(function(v){var sp=matchMedia('(max-width: 600px)').matches;v.poster='./images/'+(sp?'hero_poster_sp.webp':'hero_poster_pc.webp');})(document.querySelector('.hero-video'));
           (function(r,v){var on=function(){r.classList.add('tex-on')};if(v)v.addEventListener('playing',on,{once:true});addEventListener('scroll',on,{once:true,passive:true});addEventListener('touchstart',on,{once:true,passive:true});setTimeout(on,2500);})(document.documentElement,document.querySelector('.hero-video'));</script>
           <picture>
@@ -577,12 +574,9 @@
           <p class="section-line">静止が、ほどける。</p>
         </div>
         <figure class="motion-frame">
-          <video class="motion-video" playsinline preload="none" poster="./images/motion_poster.webp">
-            <source src="./video/motion.mp4" type="video/mp4" />
-          </video>
-          <!-- 09-28 スマホはMOTIONを720p（9.4→3.7MB）。load()を呼ばない＝再生を押すまで読まない（呼ぶと押す前に読み始めた） -->
-          <script>(function(v){if(v&&matchMedia('(max-width: 600px)').matches){var s=v.querySelector('source');s.setAttribute('src','./video/motion_sp.mp4');}})(document.querySelector('.motion-video'));</script>
-          <button class="motion-play" type="button" aria-label="Play the film">Play</button>
+          <!-- 10-27 オーナー指示「間の動画も静止画にして」＝写真の権利確認が済むまで動画（motion.mp4）を外し、元写真（ed_veil の16:9切り）を置いた。
+               戻す＝この img を元の <video class="motion-video">＋スマホ用 script＋<button class="motion-play"> に戻す（git 10-27 以前） -->
+          <img class="motion-video" src="./images/motion_still.webp" alt="レースのヴェールの横顔" width="1200" height="675" loading="lazy" decoding="async" />
         </figure>
       </section>
 

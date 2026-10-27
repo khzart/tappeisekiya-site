@@ -487,7 +487,7 @@ window.addEventListener('load', () => {
     v.querySelectorAll('source').forEach((s) => s.remove());
     // 09-28 スマホは中央を切り出した縦の動画（608×1080・1.4MB）だけ、PCは元の16:9（4.6MB）だけ
     srcs.filter((s) => s.sp === sp).forEach((s) => { const el = document.createElement('source'); el.src = s.url; el.type = s.type; v.appendChild(el); });
-    v.poster = './images/' + (sp ? 'hero_poster_sp.webp' : 'hero_poster_pc.webp');
+    v.poster = (location.pathname.includes('/en/') ? '../images/' : './images/') + (sp ? 'hero_poster_sp.webp' : 'hero_poster_pc.webp');
     v.load();
     v.play().catch(() => {});
   };

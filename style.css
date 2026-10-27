@@ -3718,3 +3718,7 @@ html[lang="en"] body #about .about-designer-statement { margin-left: -40px !impo
 @media (max-width: 600px) {
 .hero-video { background-image: url('images/hero_poster_sp.webp'); }
 }
+.hero-video { background: url('images/hero_poster_pc.webp') center / cover no-repeat; }
+@media (max-width: 600px) {
+.hero-video { background-image: url('images/hero_poster_sp.webp'); }
+}
