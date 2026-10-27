@@ -3744,3 +3744,13 @@ height: calc(100svh - 176px);
 object-fit: cover !important;
 }
 }
+@media (min-width: 601px) and (max-width: 1366px) and (orientation: landscape) and (hover: none) and (pointer: coarse) {
+.hero-video {
+background-image: url('images/hero_veil_wide.webp');
+background-position: 50% 100%;
+object-position: 50% 100% !important;
+aspect-ratio: auto;
+height: min(56.25vw, calc(100svh - 176px));
+object-fit: cover !important;
+}
+}
